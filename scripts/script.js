@@ -3,6 +3,7 @@ const getAll = (str) => document.querySelectorAll(str);
 
 const alphabetList = get('.alphabet');
 const wordElement = get('.word');
+const hangmanParts = getAll('.hangman-part');
 
 const words = [
   'item',
@@ -35,6 +36,13 @@ const showCorrectLetter = (letter) => {
     });
 };
 
+const showHangmanPart = () => {
+  const firstPartNotVisible = [...hangmanParts].find(
+    (item) => !item.classList.contains('visible')
+  );
+  firstPartNotVisible.classList.add('visible');
+};
+
 const updateWord = (event) => {
   const { target } = event;
 
@@ -43,6 +51,8 @@ const updateWord = (event) => {
 
     if (randomWord.includes(target.textContent)) {
       showCorrectLetter(target.textContent);
+    } else {
+      showHangmanPart();
     }
   }
 };
