@@ -80,3 +80,9 @@ header h1 {
   padding: 2px;
   font-size: 1.5em;
 }
+
+.digit[disabled] {
+  text-decoration: line-through;
+  opacity: 0.4;
+  pointer-events: none;
+}
