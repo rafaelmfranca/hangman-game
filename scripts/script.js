@@ -1,6 +1,8 @@
 const get = (str) => document.querySelector(str);
 const getAll = (str) => document.querySelectorAll(str);
 
+const alphabetList = get('.alphabet');
+
 const words = [
   'item',
   'gratuito',
@@ -13,9 +15,9 @@ const words = [
 ];
 
 const pickRandomWord = () => words[Math.floor(Math.random() * words.length)];
+const randomWord = pickRandomWord();
 
 const renderWord = () => {
-  const randomWord = pickRandomWord();
   const wordElement = get('.word');
 
   randomWord.split('').forEach((ch) => {
@@ -23,6 +25,16 @@ const renderWord = () => {
     wordElement.insertAdjacentHTML('beforeend', li);
   });
 };
+
+const updateWord = (event) => {
+  const { target } = event;
+
+  if (target.classList.contains('digit')) {
+    target.setAttribute('disabled', '');
+  }
+};
+
+alphabetList.addEventListener('click', updateWord);
 
 const init = () => {
   renderWord();
