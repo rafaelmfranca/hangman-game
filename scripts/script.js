@@ -32,14 +32,14 @@ const renderWord = () => {
 
 const checkIfWon = () => {
   if (correctLetters.length === randomWord.length) {
-    alert('Parabens voce ganhou!');
+    setTimeout(() => alert('Parabens voce ganhou!'), 100);
     playable = false;
   }
 };
 
 const checkIfLose = () => {
   if (wrongLetters.length === 6) {
-    alert('Que pena voce perdeu!');
+    setTimeout(() => alert('Que pena voce perdeu!'), 100);
     playable = false;
   }
 };
@@ -83,8 +83,6 @@ const updateWord = (event) => {
 
 alphabetList.addEventListener('click', updateWord);
 
-const init = () => {
-  renderWord();
-};
+const init = () => renderWord();
 
 window.onload = () => init();
