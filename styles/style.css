@@ -13,7 +13,6 @@ body {
 }
 
 header {
-  border: 1px solid black;
   width: 100%;
   height: 150px;
   display: flex;
@@ -27,10 +26,11 @@ header h1 {
   font-size: 2.5em;
 }
 
-main {
+.game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
 }
 
 .hangman-container {
@@ -40,9 +40,43 @@ main {
 }
 
 .hangman-part {
-  display: none;
+  visibility: hidden;
 }
 
 .visible {
+  visibility: visible;
+}
+
+.word {
   display: block;
+  list-style-type: none;
+}
+
+.letter {
+  display: inline-block;
+  text-transform: uppercase;
+  width: 25px;
+  margin: 0 5px;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.alphabet {
+  display: block;
+  list-style-type: none;
+}
+
+.digit {
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+  margin: 0 3px;
+  padding: 2px;
+  font-size: 1.5em;
 }
