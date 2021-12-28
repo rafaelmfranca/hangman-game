@@ -16,6 +16,10 @@ const words = [
   'higiene',
 ];
 
+let playable = true;
+const correctLetters = [];
+const wrongLetters = [];
+
 const pickRandomWord = () => words[Math.floor(Math.random() * words.length)];
 const randomWord = pickRandomWord();
 
@@ -26,13 +30,28 @@ const renderWord = () => {
   });
 };
 
+const checkIfWon = () => {
+  if (correctLetters.length === randomWord.length) {
+    alert('Parabens voce ganhou!');
+    playable = false;
+  }
+};
+
+const checkIfLose = () => {
+  if (wrongLetters.length === 6) {
+    alert('Que pena voce perdeu!');
+    playable = false;
+  }
+};
+
 const showCorrectLetter = (letter) => {
   const { children } = wordElement;
   [...children]
     .filter((item) => item.textContent === letter)
     .forEach((item) => {
-      const span = item;
-      span.innerHTML = `<span class="visible">${item.textContent}</span>`;
+      const element = item;
+      element.innerHTML = `<span class="visible">${item.textContent}</span>`;
+      correctLetters.push(letter);
     });
 };
 
@@ -46,13 +65,18 @@ const showHangmanPart = () => {
 const updateWord = (event) => {
   const { target } = event;
 
-  if (target.classList.contains('digit')) {
-    target.setAttribute('disabled', '');
+  if (playable) {
+    if (target.classList.contains('digit')) {
+      target.setAttribute('disabled', '');
 
-    if (randomWord.includes(target.textContent)) {
-      showCorrectLetter(target.textContent);
-    } else {
-      showHangmanPart();
+      if (randomWord.includes(target.textContent)) {
+        showCorrectLetter(target.textContent);
+        checkIfWon();
+      } else {
+        showHangmanPart();
+        wrongLetters.push(target.textContent);
+        checkIfLose();
+      }
     }
   }
 };
