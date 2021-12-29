@@ -4,6 +4,7 @@ const getAll = (str) => document.querySelectorAll(str);
 const alphabetList = get('.alphabet');
 const wordElement = get('.word');
 const hangmanParts = getAll('.hangman-part');
+const restartButton = get('#restart-game');
 
 const words = [
   'item',
@@ -80,7 +81,7 @@ const showHangmanPart = () => {
   firstPartNotVisible.classList.add('visible');
 };
 
-const updateWord = (event) => {
+const updateGame = (event) => {
   const { target } = event;
 
   if (playable) {
@@ -99,7 +100,10 @@ const updateWord = (event) => {
   }
 };
 
-alphabetList.addEventListener('click', updateWord);
+alphabetList.addEventListener('click', updateGame);
+
+const restartGame = () => window.location.reload();
+restartButton.addEventListener('click', restartGame);
 
 const init = () => renderWord();
 
