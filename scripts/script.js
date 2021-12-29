@@ -30,16 +30,34 @@ const renderWord = () => {
   });
 };
 
+const showModal = (typeOfModal) => {
+  const modal = get('.modal');
+
+  const wonPhrases = ['Parabéns, você acertou!', 'Que tal jogar novamente?'];
+  const lostPhrases = [
+    'Que pena! Na próxima você acerta!',
+    `A palavra correta era: ${randomWord}`,
+  ];
+  const phrases = typeOfModal === 'won' ? wonPhrases : lostPhrases;
+
+  const firstParagraph = `<p>${phrases[0]}</p>`;
+  const secondParagraph = `<p>${phrases[1]}</p>`;
+  modal.insertAdjacentHTML('afterbegin', secondParagraph);
+  modal.insertAdjacentHTML('afterbegin', firstParagraph);
+
+  modal.classList.add('visible');
+};
+
 const checkIfWon = () => {
   if (correctLetters.length === randomWord.length) {
-    setTimeout(() => alert('Parabens voce ganhou!'), 100);
+    showModal('won');
     playable = false;
   }
 };
 
 const checkIfLose = () => {
   if (wrongLetters.length === 6) {
-    setTimeout(() => alert('Que pena voce perdeu!'), 100);
+    showModal('lost');
     playable = false;
   }
 };
