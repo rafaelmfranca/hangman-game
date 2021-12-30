@@ -131,15 +131,15 @@ header h1 {
   text-transform: uppercase;
 }
 
-.hint {
+.hint-cont {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 60px;
 }
 
-.hint .hint-text {
+.hint-cont .hint-text {
   font-size: 1.2em;
   background-color: whitesmoke;
   padding: 5px;
@@ -147,4 +147,4 @@ header h1 {
   border: .5px solid rgba(0, 0, 0, 0.5);
 }
 
-.hint i { cursor: help; }
+.hint-icon { cursor: help; }

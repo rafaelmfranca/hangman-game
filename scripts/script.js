@@ -7,6 +7,8 @@ const alphabetList = get('.alphabet');
 const wordElement = get('.word');
 const hangmanParts = getAll('.hangman-part');
 const restartButton = get('#restart-game');
+const hintContainer = get('.hint-cont');
+const hintIcon = get('.hint-icon');
 
 let playable = true;
 const correctLetters = [];
@@ -98,6 +100,20 @@ alphabetList.addEventListener('click', updateGame);
 
 const restartGame = () => window.location.reload();
 restartButton.addEventListener('click', restartGame);
+
+const showHint = () => {
+  const span = `<span class="hint-text">Hint</span>`;
+  hintContainer.insertAdjacentHTML('beforeend', span);
+};
+
+hintIcon.addEventListener('mouseenter', showHint);
+
+const hideHint = () => {
+  const hintText = get('.hint-text');
+  hintContainer.removeChild(hintText);
+};
+
+hintIcon.addEventListener('mouseleave', hideHint);
 
 const init = () => displayWordAndCategory();
 
