@@ -125,3 +125,7 @@ header h1 {
   transform: rotate(180deg);
   transition: 200ms linear all;
 }
+
+.category {
+  text-transform: uppercase;
+}

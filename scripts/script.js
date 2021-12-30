@@ -12,14 +12,17 @@ let playable = true;
 const correctLetters = [];
 const wrongLetters = [];
 
-const pickRandomWord = () => words[Math.floor(Math.random() * words.length)];
-const randomWord = pickRandomWord();
+const { word, category } = words[Math.floor(Math.random() * words.length)];
 
-const renderWord = () => {
-  randomWord.split('').forEach((ch) => {
+const displayWordAndCategory = () => {
+  const categoryElement = get('.category');
+
+  word.split('').forEach((ch) => {
     const li = `<li class="letter"><span class="hidden">${ch}</span></li>`;
     wordElement.insertAdjacentHTML('beforeend', li);
   });
+
+  categoryElement.textContent = `Dica: ${category}`;
 };
 
 const showModal = (typeOfModal) => {
@@ -28,7 +31,7 @@ const showModal = (typeOfModal) => {
   const wonPhrases = ['Parabéns, você acertou!', 'Que tal jogar novamente?'];
   const lostPhrases = [
     'Que pena! Na próxima você acerta!',
-    `A palavra correta era: ${randomWord}`,
+    `A palavra correta era: ${word}`,
   ];
   const phrases = typeOfModal === 'won' ? wonPhrases : lostPhrases;
 
@@ -41,7 +44,7 @@ const showModal = (typeOfModal) => {
 };
 
 const checkIfWon = () => {
-  if (correctLetters.length === randomWord.length) {
+  if (correctLetters.length === word.length) {
     showModal('won');
     playable = false;
   }
@@ -79,7 +82,7 @@ const updateGame = (event) => {
     if (target.classList.contains('digit')) {
       target.setAttribute('disabled', '');
 
-      if (randomWord.includes(target.textContent)) {
+      if (word.includes(target.textContent)) {
         showCorrectLetter(target.textContent);
         checkIfWon();
       } else {
@@ -96,6 +99,6 @@ alphabetList.addEventListener('click', updateGame);
 const restartGame = () => window.location.reload();
 restartButton.addEventListener('click', restartGame);
 
-const init = () => renderWord();
+const init = () => displayWordAndCategory();
 
 window.onload = () => init();
