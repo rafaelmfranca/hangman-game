@@ -1,3 +1,5 @@
+import words from './words.js';
+
 const get = (str) => document.querySelector(str);
 const getAll = (str) => document.querySelectorAll(str);
 
@@ -5,17 +7,6 @@ const alphabetList = get('.alphabet');
 const wordElement = get('.word');
 const hangmanParts = getAll('.hangman-part');
 const restartButton = get('#restart-game');
-
-const words = [
-  'item',
-  'gratuito',
-  'proibido',
-  'rubrica',
-  'recorde',
-  'menu',
-  'raiz',
-  'higiene',
-];
 
 let playable = true;
 const correctLetters = [];
