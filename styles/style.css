@@ -128,4 +128,5 @@ header h1 {
 
 .category {
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
