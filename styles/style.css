@@ -10,6 +10,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: 'Neucha', cursive;
+  letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -128,5 +129,4 @@ header h1 {
 
 .category {
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
