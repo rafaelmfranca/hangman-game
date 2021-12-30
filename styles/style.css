@@ -111,7 +111,7 @@ header h1 {
   max-width: 100%;
   background-color: whitesmoke;
   border-radius: 10px 10px 0 0;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border: .5px solid rgba(0, 0, 0, 0.5);
 }
 
 .restart {
@@ -130,3 +130,21 @@ header h1 {
 .category {
   text-transform: uppercase;
 }
+
+.hint {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+}
+
+.hint .hint-text {
+  font-size: 1.2em;
+  background-color: whitesmoke;
+  padding: 5px;
+  border-radius: 10px;
+  border: .5px solid rgba(0, 0, 0, 0.5);
+}
+
+.hint i { cursor: help; }
