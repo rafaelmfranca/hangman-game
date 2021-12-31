@@ -14,7 +14,8 @@ let playable = true;
 const correctLetters = [];
 const wrongLetters = [];
 
-const { word, category } = words[Math.floor(Math.random() * words.length)];
+const { hint, word, category } =
+  words[Math.floor(Math.random() * words.length)];
 
 const displayWordAndCategory = () => {
   const categoryElement = get('.category');
@@ -24,7 +25,7 @@ const displayWordAndCategory = () => {
     wordElement.insertAdjacentHTML('beforeend', li);
   });
 
-  categoryElement.textContent = `Dica: ${category}`;
+  categoryElement.textContent = `Sou um(a): ${category}`;
 };
 
 const showModal = (typeOfModal) => {
@@ -102,7 +103,7 @@ const restartGame = () => window.location.reload();
 restartButton.addEventListener('click', restartGame);
 
 const showHint = () => {
-  const span = `<span class="hint-text">Hint</span>`;
+  const span = `<span class="hint-text">${hint}</span>`;
   hintContainer.insertAdjacentHTML('beforeend', span);
 };
 
