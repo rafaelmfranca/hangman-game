@@ -34,7 +34,7 @@ const showModal = (typeOfModal) => {
   const wonPhrases = ['Parabéns, você acertou!', 'Que tal jogar novamente?'];
   const lostPhrases = [
     'Que pena! Na próxima você acerta!',
-    `A palavra correta era: ${word}`,
+    `A palavra correta era: ${word.toUpperCase()}`,
   ];
   const phrases = typeOfModal === 'won' ? wonPhrases : lostPhrases;
 
